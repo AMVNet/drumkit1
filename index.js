@@ -6,6 +6,7 @@
 // }
 
 // another way to write iterating through each item
+//detect button press
 document.querySelectorAll(".drum").forEach(item => {
   item.addEventListener("click", handleClick)
 })
@@ -13,7 +14,19 @@ document.querySelectorAll(".drum").forEach(item => {
 function handleClick() {
   //this.style.color = "#fff";
   var buttonInnerHTML = this.innerHTML;
-  switch (buttonInnerHTML) {
+  makeSound(buttonInnerHTML);
+
+
+}
+//detect keyboard press
+document.addEventListener("keypress", function(event) {
+  makeSound(event.key);
+
+});
+
+function makeSound(key) {
+
+  switch (key) {
     case "w":
       var tom1 = new Audio("sounds/tom-1.mp3");
       tom1.play();
@@ -43,19 +56,17 @@ function handleClick() {
       kick.play();
       break;
 
-    default: console.log(buttonInnerHTML);
+    default:
+      console.log(buttonInnerHTML);
+
   }
-
-  console.log(this);
-
 }
-
-// adding eventListener also written with anonymous function
-// document.querySelectorAll(".drum")[i].addEventListener("click", function() {
-//   alert("i got clicked");
-// });
-
+  // adding eventListener also written with anonymous function
+  // document.querySelectorAll(".drum")[i].addEventListener("click", function() {
+  //   alert("i got clicked");
+  //});
 
 
-// var audio = new Audio("sounds/tom-1.mp3");
-// audio.play();
+
+  // var audio = new Audio("sounds/tom-1.mp3");
+  // audio.play();
